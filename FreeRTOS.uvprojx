@@ -111,12 +111,12 @@
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
           <SimDllArguments> -REMAP</SimDllArguments>
-          <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM3</SimDlgDllArguments>
+          <SimDlgDll>DARMSTM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pSTM32F103C8</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
-          <TargetDlgDll>TCM.DLL</TargetDlgDll>
-          <TargetDlgDllArguments>-pCM3</TargetDlgDllArguments>
+          <TargetDlgDll>TARMSTM.DLL</TargetDlgDll>
+          <TargetDlgDllArguments>-pSTM32F103C8</TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
           <OPTHX>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Device\Common;.\Device\STM32F10X\inc;.\System\inc;.\user;.\sys</IncludePath>
+              <IncludePath>.\Device\Common;.\Device\STM32F10X\inc;.\System\inc;.\user;.\sys;.\Driver\Led</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -563,6 +563,11 @@
               <FileType>2</FileType>
               <FilePath>.\Device\STM32F10X\startup_stm32f10x_hd.s</FilePath>
             </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\Common\sys.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -574,6 +579,11 @@
               <FilePath>.\user\main.c</FilePath>
             </File>
             <File>
+              <FileName>driver_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\driver_init.c</FilePath>
+            </File>
+            <File>
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\usart.c</FilePath>
@@ -581,12 +591,12 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>sys</GroupName>
+          <GroupName>Driver</GroupName>
           <Files>
             <File>
-              <FileName>sys.c</FileName>
+              <FileName>Led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\sys\sys.c</FilePath>
+              <FilePath>.\Driver\Led\Led.c</FilePath>
             </File>
           </Files>
         </Group>
