@@ -1,0 +1,3 @@
+1.#pragma import(__use_no_semihosting)  
+2.sys.c作用
+3.架构框图，外设时钟线挂载在哪根总线上

@@ -180,14 +180,7 @@ void USART_Init(USART_TypeDef* USARTx, USART_InitTypeDef* USART_InitStruct)
   uint32_t fractionaldivider = 0x00;
   uint32_t usartxbase = 0;
   RCC_ClocksTypeDef RCC_ClocksStatus;
-  /* Check the parameters */
-  assert_param(IS_USART_ALL_PERIPH(USARTx));
-  assert_param(IS_USART_BAUDRATE(USART_InitStruct->USART_BaudRate));  
-  assert_param(IS_USART_WORD_LENGTH(USART_InitStruct->USART_WordLength));
-  assert_param(IS_USART_STOPBITS(USART_InitStruct->USART_StopBits));
-  assert_param(IS_USART_PARITY(USART_InitStruct->USART_Parity));
-  assert_param(IS_USART_MODE(USART_InitStruct->USART_Mode));
-  assert_param(IS_USART_HARDWARE_FLOW_CONTROL(USART_InitStruct->USART_HardwareFlowControl));
+
   /* The hardware flow control is available only for USART1, USART2 and USART3 */
   if (USART_InitStruct->USART_HardwareFlowControl != USART_HardwareFlowControl_None)
   {
@@ -199,7 +192,7 @@ void USART_Init(USART_TypeDef* USARTx, USART_InitTypeDef* USART_InitStruct)
 /*---------------------------- USART CR2 Configuration -----------------------*/
   tmpreg = USARTx->CR2;
   /* Clear STOP[13:12] bits */
-  tmpreg &= CR2_STOP_CLEAR_Mask;
+  tmpreg &= CR2_STOP_CLEAR_Mask;//CR2寄存器，1个停止位[13-12:00]
   /* Configure the USART Stop Bits, Clock, CPOL, CPHA and LastBit ------------*/
   /* Set STOP[13:12] bits according to USART_StopBits value */
   tmpreg |= (uint32_t)USART_InitStruct->USART_StopBits;

@@ -13,7 +13,8 @@
 //All rights reserved
 //********************************************************************************  
 //THUMB指令不支持汇编内联
-//采用如下方法实现执行汇编指令WFI  
+//采用如下方法实现执行汇编指令WFI 
+
 void WFI_SET(void)
 {
 	__ASM volatile("wfi");		  
@@ -35,3 +36,28 @@ __asm void MSR_MSP(u32 addr)
     MSR MSP, r0 			//set Main Stack value
     BX r14
 }
+
+
+#include "stdio.h"
+
+#pragma import(__use_no_semihosting)             
+              
+struct __FILE 
+{ 
+	int handle; 
+
+}; 
+
+FILE __stdout;       
+   
+void _sys_exit(int x) 
+{ 
+	x = x; 
+} 
+
+int fputc(int ch, FILE *f)
+{           
+	return ch;
+}
+
+
